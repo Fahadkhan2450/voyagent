@@ -1,9 +1,12 @@
-const API_URL = import.meta.env.VITE_API_URL;
+const API_URL =
+  import.meta.env.VITE_API_URL || "http://127.0.0.1:8000";
 
 export async function planTrip(payload) {
   const res = await fetch(`${API_URL}/api/plan`, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: {
+      "Content-Type": "application/json",
+    },
     body: JSON.stringify(payload),
   });
 
@@ -13,9 +16,7 @@ export async function planTrip(payload) {
     try {
       const body = await res.json();
       if (body.detail) detail = body.detail;
-    } catch {
-      // response wasn't JSON
-    }
+    } catch {}
 
     throw new Error(detail);
   }
