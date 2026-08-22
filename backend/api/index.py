@@ -18,6 +18,7 @@ experience; point VITE_API_URL at wherever the backend actually runs.
 
 import sys
 import os
+from main import app
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
